@@ -652,15 +652,15 @@ open class LocationPicker: UIViewController, UIGestureRecognizerDelegate {
     
     @objc private func doneButtonDidTap(barButtonItem: UIBarButtonItem) {
         if let locationItem = selectedLocationItem {
-//             self.performSegue(withIdentifier: saveSegueIdentifier, sender: self)
-            navigationController?.dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: "UnwindToNewAlertSegue", sender: self)
+//             navigationController?.dismiss(animated: true, completion: nil)
             locationDidPick(locationItem: locationItem)
         }
     }
     
     @objc private func cancelButtonDidTap(barButtonItem: UIBarButtonItem) {
-//         self.performSegue(withIdentifier: cancelSegueIdentifier, sender: self)
-        navigationController?.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "UnwindToNewAlertSegue", sender: self)
+//         navigationController?.dismiss(animated: true, completion: nil)
     }
     
     
