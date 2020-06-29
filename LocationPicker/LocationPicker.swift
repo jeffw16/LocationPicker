@@ -337,6 +337,8 @@ open class LocationPicker: UIViewController, UIGestureRecognizerDelegate {
     
     
     // MARK: Attributes
+    public var saveSegueIdentifier = "UnwindSaveSegue"
+    public var cancelSegueIdentifier = "UnwindCancelSegue"
     
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
@@ -650,13 +652,13 @@ open class LocationPicker: UIViewController, UIGestureRecognizerDelegate {
     
     @objc private func doneButtonDidTap(barButtonItem: UIBarButtonItem) {
         if let locationItem = selectedLocationItem {
-            dismiss(animated: true, completion: nil)
+            self.performSegue(withIdentifier: saveSegueIdentifier, sender: self)
             locationDidPick(locationItem: locationItem)
         }
     }
     
     @objc private func cancelButtonDidTap(barButtonItem: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: cancelSegueIdentifier, sender: self)
     }
     
     
